@@ -17,14 +17,16 @@ Architecture: FSD-lite (app / entities / features / shared / pages)
 Stack: Vite 5 + React 18 + TypeScript 5 (strict) + Vitest 2 + CSS Modules
 
 Spec-driven workflow:
-- All specs are in .speckit/artifacts/
-- Constitution (inviolable rules) is in .speckit/constitution.md
+- Specification: .speckit/spec.md
+- Technical Architecture Plan: .speckit/plan.md
+- Implementation Tasks Checklist: .speckit/tasks.md
+- Constitution (inviolable rules): .speckit/constitution.md
 - FSD Architecture Guardian: .agents/rules/fsd-architecture.instructions.md & AGENTS.md
 - React TS Guardian rules: .agents/rules/react-typescript.instructions.md & AGENTS.md
 - Each task: READ spec → IMPLEMENT → GATE (typecheck + test:run + lint) → I REVIEW → COMMIT → PUSH
 
 Current task: Task 05 — Feature: Move note (drag)
-Spec file: .speckit/artifacts/05-move-note.md
+Spec & Plan: .speckit/spec.md (US-2) & .speckit/plan.md
 
 Please:
 1. Read the spec file fully before writing any code
