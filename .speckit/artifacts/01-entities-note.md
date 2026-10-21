@@ -1,5 +1,5 @@
 # Task 01 — Note Entity: Types, Reducer & NoteCard
-## Status: ⬜ TODO
+## Status: ✅ COMPLETE
 
 ---
 

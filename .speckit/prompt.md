@@ -21,8 +21,8 @@ Spec-driven workflow:
 - Constitution (inviolable rules) is in .speckit/constitution.md
 - Each task: READ spec → IMPLEMENT → GATE (typecheck + test:run + lint) → I REVIEW → COMMIT → PUSH
 
-Current task: [FILL IN TASK NUMBER AND NAME]
-Spec file: .speckit/artifacts/[FILL IN FILENAME]
+Current task: Task 02 — App state: NoteContext + BoardPage canvas
+Spec file: .speckit/artifacts/02-board-canvas.md
 
 Please:
 1. Read the spec file fully before writing any code
@@ -38,7 +38,7 @@ Please:
 
 ### Phase 1 — Core (mandatory)
 - [x] **Task 00** — Project setup & config *(done by guide)*
-- [ ] **Task 01** — Note entity: types, reducer, NoteCard
+- [x] **Task 01** — Note entity: types, reducer, NoteCard
   - Spec: `.speckit/artifacts/01-entities-note.md`
   - Gates: `npm run typecheck && npm run test:run && npm run lint`
   - Commit: `feat(entities/note): add Note type, noteReducer, and NoteCard component`

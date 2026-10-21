@@ -75,9 +75,10 @@ describe('noteReducer', () => {
         id: 'note-1',
         position: { x: 300, y: 400 },
       })
-      const { position: _, ...rest } = state[0]!
-      const { position: __, ...original } = existingNote
-      expect(rest).toEqual(original)
+      expect(state[0]).toEqual({
+        ...existingNote,
+        position: { x: 300, y: 400 },
+      })
     })
 
     it('does not affect other notes', () => {
@@ -107,9 +108,10 @@ describe('noteReducer', () => {
         id: 'note-1',
         size: { width: 300, height: 250 },
       })
-      const { size: _, ...rest } = state[0]!
-      const { size: __, ...original } = existingNote
-      expect(rest).toEqual(original)
+      expect(state[0]).toEqual({
+        ...existingNote,
+        size: { width: 300, height: 250 },
+      })
     })
   })
 
@@ -154,9 +156,10 @@ describe('noteReducer', () => {
         id: 'note-1',
         text: 'New text',
       })
-      const { text: _, ...rest } = state[0]!
-      const { text: __, ...original } = existingNote
-      expect(rest).toEqual(original)
+      expect(state[0]).toEqual({
+        ...existingNote,
+        text: 'New text',
+      })
     })
   })
 
@@ -196,9 +199,10 @@ describe('noteReducer', () => {
         id: 'note-1',
         color: 'blue',
       })
-      const { color: _, ...rest } = state[0]!
-      const { color: __, ...original } = existingNote
-      expect(rest).toEqual(original)
+      expect(state[0]).toEqual({
+        ...existingNote,
+        color: 'blue',
+      })
     })
   })
 

@@ -1,0 +1,94 @@
+.card {
+  position: absolute;
+  background-color: var(--note-color, #fef08a);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.header {
+  height: 28px;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 8px;
+  background-color: rgba(0, 0, 0, 0.05);
+  cursor: grab;
+  touch-action: none;
+}
+
+.header:active {
+  cursor: grabbing;
+}
+
+.colorSwatches {
+  display: flex;
+  gap: 4px;
+}
+
+.swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: var(--swatch-color);
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.swatch:hover {
+  transform: scale(1.15);
+}
+
+.swatchActive {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.7);
+}
+
+.textarea {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 8px 12px;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #1f2937;
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
+  cursor: text;
+}
+
+.textarea::placeholder {
+  color: rgba(31, 41, 55, 0.45);
+}
+
+.resizeHandle {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 16px;
+  height: 16px;
+  cursor: nwse-resize;
+  touch-action: none;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.25) 50%,
+    rgba(0, 0, 0, 0.25) 60%,
+    transparent 60%,
+    transparent 75%,
+    rgba(0, 0, 0, 0.25) 75%,
+    rgba(0, 0, 0, 0.25) 85%,
+    transparent 85%
+  );
+}
