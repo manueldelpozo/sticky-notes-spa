@@ -147,7 +147,8 @@ src/
 ---
 
 ## Notes for Review Session
-- [ ] Architecture description written (2-3 paragraphs, in English)
-- [ ] README updated with build instructions
-- [ ] All test gates pass on clean checkout
-- [ ] Manual browser test: Chrome, Firefox, Edge
+- [x] Architecture description written (2-3 paragraphs, in English)
+- [x] README updated with build instructions
+- [x] All test gates pass on clean checkout
+- [x] Manual browser test: Chrome, Firefox, Edge
+
