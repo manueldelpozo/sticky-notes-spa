@@ -1,5 +1,5 @@
 # Task 04 — Feature: Create Note
-## Status: ⬜ TODO
+## Status: ✅ COMPLETE
 
 ---
 
