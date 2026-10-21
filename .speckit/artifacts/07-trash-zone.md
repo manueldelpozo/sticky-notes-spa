@@ -1,5 +1,5 @@
 # Task 07 — Feature: Trash Zone (drag-to-remove)
-## Status: ⬜ TODO
+## Status: ✅ COMPLETE
 
 ---
 

@@ -62,4 +62,67 @@ describe('BoardPage', () => {
 
     expect(screen.getByPlaceholderText('Type a note…')).toBeInTheDocument()
   })
+
+  it('removes a note when dragged and dropped onto the trash zone', () => {
+    const notes: readonly Note[] = [
+      {
+        id: 'note-1',
+        position: { x: 50, y: 80 },
+        size: { width: 200, height: 180 },
+        text: 'Doomed note',
+        color: 'yellow',
+        zIndex: 1,
+        createdAt: 1000,
+      },
+    ]
+
+    render(
+      <NoteProvider initialNotes={notes}>
+        <BoardPage />
+      </NoteProvider>,
+    )
+
+    expect(screen.getByDisplayValue('Doomed note')).toBeInTheDocument()
+
+    const trashZone = screen.getByTestId('trash-zone')
+    trashZone.getBoundingClientRect = () => ({
+      left: 800,
+      right: 900,
+      top: 600,
+      bottom: 700,
+      width: 100,
+      height: 100,
+      x: 800,
+      y: 600,
+      toJSON: () => {},
+    })
+
+    const noteCard = screen.getByTestId('trash-zone').parentElement?.querySelector('header')
+    expect(noteCard).toBeInTheDocument()
+
+    // 1. Pointer down on note header
+    fireEvent.pointerDown(noteCard!, {
+      clientX: 60,
+      clientY: 90,
+      pointerId: 1,
+      button: 0,
+    })
+
+    // 2. Drag over threshold and onto trash zone
+    fireEvent.pointerMove(window, {
+      clientX: 850,
+      clientY: 650,
+      pointerId: 1,
+    })
+
+    // 3. Release pointer over trash zone
+    fireEvent.pointerUp(window, {
+      clientX: 850,
+      clientY: 650,
+      pointerId: 1,
+    })
+
+    // Note should now be removed from state
+    expect(screen.queryByDisplayValue('Doomed note')).not.toBeInTheDocument()
+  })
 })

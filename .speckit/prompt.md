@@ -25,8 +25,8 @@ Spec-driven workflow:
 - React TS Guardian rules: .agents/rules/react-typescript.instructions.md & AGENTS.md
 - Each task: READ spec → IMPLEMENT → GATE (typecheck + test:run + lint) → I REVIEW → COMMIT → PUSH
 
-Current task: Task 07 — Feature: Trash zone (drag-to-remove)
-Spec & Plan: .speckit/spec.md (US-4) & .speckit/plan.md
+Current task: Phase 1 Core Complete! Next: Bonus I — Text editing & Bonus II — Bring to Front
+Spec & Plan: .speckit/spec.md & .speckit/plan.md
 
 Please:
 1. Read the spec file fully before writing any code
@@ -66,10 +66,10 @@ Please:
   - Spec: `.speckit/artifacts/06-resize-note.md`
   - Gates: `npm run typecheck && npm run test:run && npm run lint`
   - Commit: `feat(features/resize-note): implement note resize via drag handle`
-- [ ] **Task 07** — Feature: Trash zone (drag-to-remove)
+- [x] **Task 07** — Feature: Trash zone (drag-to-remove)
   - Spec: `.speckit/artifacts/07-trash-zone.md`
   - Gates: `npm run typecheck && npm run test:run && npm run lint`
-  - Commit: `feat(features/trash-note): implement drag-to-trash`
+  - Commit: `feat(features/trash-note): implement drag-to-trash with hover detection`
 
 ### Phase 2 — Bonus (optional, ordered by value/effort)
 - [ ] **Bonus III** — localStorage persistence

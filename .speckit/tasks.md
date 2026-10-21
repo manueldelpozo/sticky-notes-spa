@@ -81,16 +81,18 @@
   - **Gates**: Passed (45 tests total)
   - **Commit**: `feat(features/resize-note): implement note resize via drag handle`
 
-- [ ] **Task 07: Feature: Trash Zone (Drag-to-Delete)**
+- [x] **Task 07: Feature: Trash Zone (Drag-to-Delete)**
   - **Branch**: `feature/07-trash-zone`
   - **Deliverables**:
-    - `src/features/trash-note/hooks/useTrashZone.ts` (hover detection during active drag session)
-    - `src/features/trash-note/hooks/useTrashZone.test.ts`
+    - `src/features/trash-note/hooks/useTrashZone.ts` (hover detection during active drag session, drop removal)
+    - `src/features/trash-note/hooks/useTrashZone.test.tsx` (6 unit tests for bounds overlap, drop, reset)
     - `src/features/trash-note/index.ts` (barrel export)
-    - `src/shared/ui/TrashZone.tsx` (replace stub, active hover state, delete icon)
+    - `src/shared/ui/TrashZone.tsx` (ref forwarding, active hover state, delete icon)
+    - `src/shared/ui/TrashZone.test.tsx` (3 unit tests)
     - `src/pages/board/BoardPage.tsx` (wire delete action on release)
-  - **Gates**: `npm run typecheck && npm run test:run && npm run lint`
-  - **Commit**: `feat(features/trash-note): implement drag-to-trash`
+    - `src/pages/board/components/BoardNoteCard.tsx` (forward drag events)
+  - **Gates**: Passed (55 tests total)
+  - **Commit**: `feat(features/trash-note): implement drag-to-trash with hover detection`
 
 ---
 
