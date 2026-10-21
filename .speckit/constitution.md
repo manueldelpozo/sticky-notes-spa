@@ -132,6 +132,11 @@ No inline styles except for dynamic values (position, size from state).
 Assessment requirement: no readymade component libraries.
 Only allowed external packages: React, Vite, Vitest, TypeScript, ESLint.
 
+### 4.5 React TypeScript Component Guardian
+Components accepting children MUST use `PropsWithChildren<P>`.
+Do NOT declare `children: ReactNode` or use `React.FC`.
+Detailed guidelines in [.agents/rules/react-typescript.instructions.md](../.agents/rules/react-typescript.instructions.md).
+
 ---
 
 ## 5. Feature Requirements
