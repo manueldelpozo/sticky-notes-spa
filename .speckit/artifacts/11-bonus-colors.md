@@ -1,5 +1,5 @@
 # Task 11 (Bonus IV) — Note Colors
-## Status: ⬜ TODO
+## Status: ✅ COMPLETE
 
 ---
 

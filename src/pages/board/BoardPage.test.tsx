@@ -166,4 +166,34 @@ describe('BoardPage', () => {
     // Back note is elevated above front note (10 + 1 = 11)
     expect(backNote).toHaveStyle({ zIndex: 11 })
   })
+
+  it('changes note color when a color swatch is clicked', () => {
+    const notes: readonly Note[] = [
+      {
+        id: 'note-1',
+        position: { x: 50, y: 80 },
+        size: { width: 200, height: 180 },
+        text: 'Color note',
+        color: 'yellow',
+        zIndex: 1,
+        createdAt: 1000,
+      },
+    ]
+
+    render(
+      <NoteProvider initialNotes={notes}>
+        <BoardPage />
+      </NoteProvider>,
+    )
+
+    const card = screen.getByDisplayValue('Color note').closest('article')
+    expect(card).toBeInTheDocument()
+
+    // Click green swatch
+    const greenSwatch = screen.getByLabelText('Set note color to green')
+    fireEvent.click(greenSwatch)
+
+    // Note color custom property is updated to var(--color-green)
+    expect(card).toHaveStyle({ '--note-color': 'var(--color-green)' })
+  })
 })
