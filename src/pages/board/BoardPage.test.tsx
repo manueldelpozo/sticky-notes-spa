@@ -125,4 +125,45 @@ describe('BoardPage', () => {
     // Note should now be removed from state
     expect(screen.queryByDisplayValue('Doomed note')).not.toBeInTheDocument()
   })
+
+  it('brings a note to front when clicked, elevating its z-index', () => {
+    const notes: readonly Note[] = [
+      {
+        id: 'note-1',
+        position: { x: 50, y: 80 },
+        size: { width: 200, height: 180 },
+        text: 'Back note',
+        color: 'yellow',
+        zIndex: 1,
+        createdAt: 1000,
+      },
+      {
+        id: 'note-2',
+        position: { x: 80, y: 100 },
+        size: { width: 200, height: 180 },
+        text: 'Front note',
+        color: 'pink',
+        zIndex: 10,
+        createdAt: 2000,
+      },
+    ]
+
+    render(
+      <NoteProvider initialNotes={notes}>
+        <BoardPage />
+      </NoteProvider>,
+    )
+
+    const backNote = screen.getByDisplayValue('Back note').closest('article')
+    const frontNote = screen.getByDisplayValue('Front note').closest('article')
+
+    expect(backNote).toHaveStyle({ zIndex: 1 })
+    expect(frontNote).toHaveStyle({ zIndex: 10 })
+
+    // Click on the back note
+    fireEvent.click(backNote!)
+
+    // Back note is elevated above front note (10 + 1 = 11)
+    expect(backNote).toHaveStyle({ zIndex: 11 })
+  })
 })
