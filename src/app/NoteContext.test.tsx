@@ -1,6 +1,6 @@
 import { type PropsWithChildren } from 'react'
 import { describe, it, expect, vi } from 'vitest'
-import { renderHook, act } from '@testing-library/react'
+import { renderHook, act, waitFor } from '@testing-library/react'
 import { NoteProvider } from './NoteProvider'
 import { useNotes } from './noteContext'
 import type { Note } from '@/entities/note'
@@ -73,4 +73,81 @@ describe('NoteContext', () => {
     expect(result.current.notes[0]?.text).toBe('Hello world')
     expect(result.current.notes[0]?.color).toBe('green')
   })
+
+  it('hydrates notes from repository on mount', async () => {
+    const savedNotes: readonly Note[] = [
+      {
+        id: 'saved-1',
+        position: { x: 30, y: 40 },
+        size: { width: 150, height: 120 },
+        text: 'From storage',
+        color: 'pink',
+        zIndex: 1,
+        createdAt: 500,
+      },
+    ]
+
+    const mockRepo = {
+      loadNotes: vi.fn().mockResolvedValue(savedNotes),
+      saveNotes: vi.fn().mockResolvedValue(undefined),
+    }
+
+    const wrapper = ({ children }: PropsWithChildren) => (
+      <NoteProvider repository={mockRepo}>{children}</NoteProvider>
+    )
+
+    const { result } = renderHook(() => useNotes(), { wrapper })
+
+    await waitFor(() => {
+      expect(result.current.notes).toEqual(savedNotes)
+    })
+    expect(mockRepo.loadNotes).toHaveBeenCalledTimes(1)
+  })
+
+  it('auto-saves notes to repository with debounce after dispatching an action', async () => {
+    const mockRepo = {
+      loadNotes: vi.fn().mockResolvedValue([]),
+      saveNotes: vi.fn().mockResolvedValue(undefined),
+    }
+
+    const wrapper = ({ children }: PropsWithChildren) => (
+      <NoteProvider repository={mockRepo}>{children}</NoteProvider>
+    )
+
+    const { result } = renderHook(() => useNotes(), { wrapper })
+
+    await waitFor(() => {
+      expect(mockRepo.loadNotes).toHaveBeenCalledTimes(1)
+    })
+
+    vi.useFakeTimers()
+
+    act(() => {
+      result.current.dispatch({
+        type: 'ADD',
+        payload: {
+          position: { x: 10, y: 10 },
+          size: { width: 120, height: 100 },
+          text: 'Auto-saved note',
+          color: 'blue',
+        },
+      })
+    })
+
+    expect(mockRepo.saveNotes).not.toHaveBeenCalled()
+
+    act(() => {
+      vi.advanceTimersByTime(300)
+    })
+
+    expect(mockRepo.saveNotes).toHaveBeenCalledTimes(1)
+    expect(mockRepo.saveNotes).toHaveBeenCalledWith(
+      expect.arrayContaining([
+        expect.objectContaining({ text: 'Auto-saved note', color: 'blue' }),
+      ]),
+    )
+
+    vi.useRealTimers()
+  })
 })
+
