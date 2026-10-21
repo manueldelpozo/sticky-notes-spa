@@ -19,17 +19,19 @@ interface NoteContextValue {
 }
 ```
 - `createContext` with `undefined` as default (force consumers to be wrapped)
-- `NoteProvider` component: uses `useReducer(noteReducer, [])`, provides context
+- `NoteProvider` component: uses `useReducer(noteReducer, initialNotes ?? [])`, typed with `PropsWithChildren<{ initialNotes?: readonly Note[] }>`
 - `useNotes()` hook: throws if used outside provider (safety guard)
+- Note: `noteContext.ts` and `NoteProvider.tsx` separated to satisfy Constitution §4.5 (Fast Refresh HMR)
 
 ### `src/app/NoteContext.test.tsx`
 - Test `useNotes` throws if outside `NoteProvider`
 - Test `NoteProvider` provides correct initial state (empty array)
 - Test dispatching `ADD` through context updates state
+- Wrapper typed with `PropsWithChildren`
 
 ### `src/app/index.ts` (barrel)
 ```ts
-export { NoteProvider, useNotes } from './NoteContext'
+export { NoteProvider, useNotes, NoteContext } from './index'
 ```
 
 ### `src/pages/board/BoardPage.tsx`
