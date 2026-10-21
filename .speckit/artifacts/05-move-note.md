@@ -9,12 +9,12 @@ Uses `useDrag` from `shared/lib`. Dispatches `MOVE` actions to update position.
 
 ---
 
-## Files to Create/Modify
+## Files to Create/Modify (FSD Segments)
 
-### `src/features/move-note/useMoveNote.ts`
+### `src/features/move-note/hooks/useMoveNote.ts`
 ```ts
 interface UseMoveNoteReturn {
-  handleDragStart: (e: React.PointerEvent) => void
+  handleDragStart: (event: React.PointerEvent<HTMLElement>) => void
   isDragging: boolean
 }
 
@@ -30,14 +30,15 @@ Implementation:
   - Read current position from `useNotes()` state by `noteId`
   - On each `onDragMove`, add `dx`/`dy` to the last known position
 
-### `src/features/move-note/useMoveNote.test.ts`
+### `src/features/move-note/hooks/useMoveNote.test.ts`
 - Dispatches BRING_TO_FRONT on drag start
 - Dispatches MOVE with correct accumulated position
 - Multiple consecutive moves accumulate deltas correctly
 
-### `src/features/move-note/index.ts` (barrel)
+### `src/features/move-note/index.ts` (slice barrel)
 ```ts
-export { useMoveNote } from './useMoveNote'
+export { useMoveNote } from './hooks/useMoveNote'
+export type { UseMoveNoteReturn } from './hooks/useMoveNote'
 ```
 
 ### Modify `src/entities/note/ui/NoteCard.tsx`

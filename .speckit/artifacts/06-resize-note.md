@@ -9,12 +9,22 @@ Uses `useDrag` from `shared/lib`. Dispatches `RESIZE` actions.
 
 ---
 
-## Files to Create/Modify
+## Files to Create/Modify (FSD Segments)
 
-### `src/features/resize-note/useResizeNote.ts`
+### `src/features/resize-note/constants/resizeLimits.ts`
+```ts
+import type { Size } from '@/entities/note'
+
+export const MIN_NOTE_SIZE: Size = {
+  width: 120,
+  height: 100,
+}
+```
+
+### `src/features/resize-note/hooks/useResizeNote.ts`
 ```ts
 interface UseResizeNoteReturn {
-  handleResizeStart: (e: React.PointerEvent) => void
+  handleResizeStart: (event: React.PointerEvent<HTMLElement>) => void
   isResizing: boolean
 }
 
@@ -26,16 +36,18 @@ Implementation:
 - Calls `useDrag` with:
   - `onDragMove`: dispatches `{ type: 'RESIZE', id: noteId, size: newSize }`
   - Accumulates deltas: `newWidth = currentWidth + dx`, `newHeight = currentHeight + dy`
-- Enforce minimum size: `{ width: 120, height: 100 }` — clamp in the hook
+- Enforce minimum size: `{ width: 120, height: 100 }` from `constants/resizeLimits.ts`
 
-### `src/features/resize-note/useResizeNote.test.ts`
+### `src/features/resize-note/hooks/useResizeNote.test.ts`
 - Dispatches RESIZE with correct accumulated size
 - Enforces minimum width (120px) — cannot resize smaller
 - Enforces minimum height (100px) — cannot resize smaller
 
-### `src/features/resize-note/index.ts` (barrel)
+### `src/features/resize-note/index.ts` (slice barrel)
 ```ts
-export { useResizeNote } from './useResizeNote'
+export { useResizeNote } from './hooks/useResizeNote'
+export type { UseResizeNoteReturn } from './hooks/useResizeNote'
+export { MIN_NOTE_SIZE } from './constants/resizeLimits'
 ```
 
 ### Modify `src/entities/note/ui/NoteCard.tsx`

@@ -1,5 +1,5 @@
 # Task 04 — Feature: Create Note
-## Status: ⬜ TODO
+## Status: ✅ COMPLETE
 
 ---
 
@@ -20,12 +20,22 @@ Default color: `'yellow'`.
 
 ---
 
-## Files to Create/Modify
+## Files to Create/Modify (FSD Segments)
 
-### `src/features/create-note/useCreateNote.ts`
+### `src/features/create-note/constants/noteDefaults.ts`
+```ts
+import type { Size } from '@/entities/note'
+
+export const DEFAULT_NOTE_SIZE: Size = {
+  width: 200,
+  height: 180,
+}
+```
+
+### `src/features/create-note/hooks/useCreateNote.ts`
 ```ts
 interface UseCreateNoteReturn {
-  handleBoardDoubleClick: (e: React.MouseEvent<HTMLElement>) => void
+  handleBoardDoubleClick: (event: React.MouseEvent<HTMLElement>) => void
 }
 
 function useCreateNote(): UseCreateNoteReturn
@@ -33,19 +43,22 @@ function useCreateNote(): UseCreateNoteReturn
 
 Implementation:
 - Gets `dispatch` from `useNotes()`
-- On double-click: reads `e.clientX`, `e.clientY` relative to `e.currentTarget`
+- On double-click: reads `event.clientX`, `event.clientY` relative to `event.currentTarget`
   (use `getBoundingClientRect()` to compute offset from canvas edge)
-- Dispatches `{ type: 'ADD', payload: { position, size, text: '', color: 'yellow', ... } }`
-- If click target is a NoteCard (has `data-note-id` attribute), do NOT create (check `e.target`)
+- Dispatches `{ type: 'ADD', payload: { position, size: DEFAULT_NOTE_SIZE, text: '', color: 'yellow', ... } }`
+- If click target is a NoteCard (has `data-note-id` attribute) or trash zone, do NOT create
 
-### `src/features/create-note/useCreateNote.test.ts`
+### `src/features/create-note/hooks/useCreateNote.test.tsx`
 - Double-click on empty board dispatches ADD
 - Double-click on a note element does NOT dispatch (event target check)
+- Double-click on trash zone does NOT dispatch
 - Position is computed relative to board element
 
-### `src/features/create-note/index.ts` (barrel)
+### `src/features/create-note/index.ts` (slice barrel)
 ```ts
-export { useCreateNote } from './useCreateNote'
+export { useCreateNote } from './hooks/useCreateNote'
+export type { UseCreateNoteReturn } from './hooks/useCreateNote'
+export { DEFAULT_NOTE_SIZE } from './constants/noteDefaults'
 ```
 
 ### Modify `src/pages/board/BoardPage.tsx`

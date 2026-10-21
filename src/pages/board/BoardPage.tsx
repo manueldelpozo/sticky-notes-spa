@@ -1,13 +1,19 @@
 import styles from './BoardPage.module.css'
 import { useNotes } from '@/app'
 import { NoteCard } from '@/entities/note'
+import { useCreateNote } from '@/features/create-note'
 import { TrashZone } from '@/shared/ui'
 
 export function BoardPage() {
   const { notes, dispatch } = useNotes()
+  const { handleBoardDoubleClick } = useCreateNote()
 
   return (
-    <main className={styles.board} data-testid="board">
+    <main
+      className={styles.board}
+      data-testid="board"
+      onDoubleClick={handleBoardDoubleClick}
+    >
       {notes.map(note => (
         <NoteCard
           key={note.id}

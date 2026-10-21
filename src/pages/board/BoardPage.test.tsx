@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { NoteProvider } from '@/app'
 import { BoardPage } from './BoardPage'
 import type { Note } from '@/entities/note'
@@ -46,5 +46,20 @@ describe('BoardPage', () => {
 
     expect(screen.getByDisplayValue('First note')).toBeInTheDocument()
     expect(screen.getByDisplayValue('Second note')).toBeInTheDocument()
+  })
+
+  it('creates a new note on empty board double-click', () => {
+    render(
+      <NoteProvider>
+        <BoardPage />
+      </NoteProvider>,
+    )
+
+    const board = screen.getByTestId('board')
+    expect(screen.queryByPlaceholderText('Type a note…')).not.toBeInTheDocument()
+
+    fireEvent.doubleClick(board, { clientX: 200, clientY: 150 })
+
+    expect(screen.getByPlaceholderText('Type a note…')).toBeInTheDocument()
   })
 })
