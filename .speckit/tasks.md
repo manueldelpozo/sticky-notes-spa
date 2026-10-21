@@ -98,8 +98,11 @@
 
 ## Phase 2 — Bonus Features (Ordered by Priority)
 
-- [ ] **Bonus I: Text Editing**
-  - **Deliverables**: Wire `UPDATE_TEXT` on textarea change, isolated pointer events.
+- [x] **Bonus I: Text Editing**
+  - **Branch**: `feature/08-bonus-text`
+  - **Deliverables**: Wire `UPDATE_TEXT` on textarea change, isolated pointer events, keyboard accessibility (`tabIndex={0}`), comprehensive `NoteCard.test.tsx`.
+  - **Gates**: Passed (71 tests total)
+  - **Commit**: `feat(bonus/text): enable note text editing with UPDATE_TEXT action`
 - [ ] **Bonus II: Bring to Front (Z-Index)**
   - **Deliverables**: Wire `BRING_TO_FRONT` on card click and drag start.
 - [x] **Bonus III: LocalStorage Persistence**

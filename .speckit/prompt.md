@@ -76,8 +76,10 @@ Please:
   - Spec: `.speckit/artifacts/10-bonus-storage.md`
   - Gates: `npm run typecheck && npm run test:run && npm run lint`
   - Commit: `feat(bonus/storage): add NoteRepository abstraction + LocalStorageNoteRepository`
-- [ ] **Bonus I** — Text editing
+- [x] **Bonus I** — Text editing
   - Spec: `.speckit/artifacts/08-bonus-text.md`
+  - Gates: `npm run typecheck && npm run test:run && npm run lint`
+  - Commit: `feat(bonus/text): enable note text editing with UPDATE_TEXT action`
 - [ ] **Bonus II** — Bring to front (z-index)
   - Spec: `.speckit/artifacts/09-bonus-zindex.md`
 - [ ] **Bonus IV** — Note colors

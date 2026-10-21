@@ -62,8 +62,11 @@ export function NoteCard({
         className={styles.textarea}
         value={text}
         placeholder="Type a note…"
+        tabIndex={0}
         onChange={event => onTextChange?.(event.target.value)}
         onPointerDown={event => event.stopPropagation()}
+        onFocus={event => event.stopPropagation()}
+        onBlur={event => event.stopPropagation()}
       />
 
       <div
