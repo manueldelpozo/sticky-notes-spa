@@ -15,6 +15,8 @@ Bootstrap the project with all configuration files, directory structure, and CI-
 - [x] `src/test/setup.ts` — jest-dom import
 - [x] `.speckit/constitution.md`
 - [x] `.speckit/prompt.md`
+- [x] `AGENTS.md` — workspace agent guidelines
+- [x] `.agents/rules/react-typescript.instructions.md` — React TypeScript Guardian
 - [x] `.speckit/artifacts/` — all task specs
 
 ### Directory structure:

@@ -19,10 +19,11 @@ Stack: Vite 5 + React 18 + TypeScript 5 (strict) + Vitest 2 + CSS Modules
 Spec-driven workflow:
 - All specs are in .speckit/artifacts/
 - Constitution (inviolable rules) is in .speckit/constitution.md
+- React TS Guardian rules: .agents/rules/react-typescript.instructions.md & AGENTS.md
 - Each task: READ spec → IMPLEMENT → GATE (typecheck + test:run + lint) → I REVIEW → COMMIT → PUSH
 
-Current task: Task 02 — App state: NoteContext + BoardPage canvas
-Spec file: .speckit/artifacts/02-board-canvas.md
+Current task: Task 03 — Drag engine: useDrag hook (PointerEvent)
+Spec file: .speckit/artifacts/03-drag-engine.md
 
 Please:
 1. Read the spec file fully before writing any code
@@ -42,7 +43,7 @@ Please:
   - Spec: `.speckit/artifacts/01-entities-note.md`
   - Gates: `npm run typecheck && npm run test:run && npm run lint`
   - Commit: `feat(entities/note): add Note type, noteReducer, and NoteCard component`
-- [ ] **Task 02** — App state: NoteContext + BoardPage canvas
+- [x] **Task 02** — App state: NoteContext + BoardPage canvas
   - Spec: `.speckit/artifacts/02-board-canvas.md`
   - Gates: `npm run typecheck && npm run test:run && npm run lint`
   - Commit: `feat(app): add NoteContext + BoardPage shell`
