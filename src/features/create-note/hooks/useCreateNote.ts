@@ -1,11 +1,6 @@
 import { useCallback, type MouseEvent as ReactMouseEvent } from 'react'
 import { useNotes } from '@/app'
-import type { Size } from '@/entities/note'
-
-export const DEFAULT_NOTE_SIZE: Size = {
-  width: 200,
-  height: 180,
-}
+import { DEFAULT_NOTE_SIZE } from '../constants/noteDefaults'
 
 export interface UseCreateNoteReturn {
   handleBoardDoubleClick: (event: ReactMouseEvent<HTMLElement>) => void

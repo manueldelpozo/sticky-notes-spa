@@ -2,7 +2,8 @@ import { describe, it, expect, vi } from 'vitest'
 import { renderHook, act } from '@testing-library/react'
 import { type PropsWithChildren, type MouseEvent as ReactMouseEvent } from 'react'
 import { NoteContext, type NoteContextValue } from '@/app'
-import { useCreateNote, DEFAULT_NOTE_SIZE } from './useCreateNote'
+import { useCreateNote } from './useCreateNote'
+import { DEFAULT_NOTE_SIZE } from '../constants/noteDefaults'
 
 describe('useCreateNote', () => {
   const createMockDoubleClick = (

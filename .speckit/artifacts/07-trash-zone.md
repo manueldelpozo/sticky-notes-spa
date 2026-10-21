@@ -17,9 +17,9 @@ When a note is dragged over it, the note is removed.
 
 ---
 
-## Files to Create/Modify
+## Files to Create/Modify (FSD Segments)
 
-### `src/features/trash-note/useTrashZone.ts`
+### `src/features/trash-note/hooks/useTrashZone.ts`
 ```ts
 interface UseTrashZoneReturn {
   isOver: boolean

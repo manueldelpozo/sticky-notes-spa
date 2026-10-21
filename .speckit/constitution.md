@@ -43,6 +43,16 @@ import { Note } from '@/entities/note/model/types'
 - No component fetches data directly or owns reducer logic.
 - Business logic lives in `model/` subdirectories or `shared/lib/`.
 
+### 1.4 Slice Segment Structure (FSD Segments)
+Every slice inside `features/*`, `entities/*`, `pages/*`, and `shared/*` must organize internal files into designated segments:
+- `components/` (or `ui/`): Presentational and container UI elements.
+- `hooks/`: Custom React hooks embodying user interactions.
+- `constants/`: Configuration values, default sizes, thresholds.
+- `model/`: State reducers, action unions, domain interfaces.
+- `lib/`: Pure calculation and utility helpers.
+Loose implementation files directly in the slice root are FORBIDDEN; only the public barrel `index.ts` lives at the slice root.
+Enforced by the FSD Architecture Guardian: [.agents/rules/fsd-architecture.instructions.md](../.agents/rules/fsd-architecture.instructions.md).
+
 ---
 
 ## 2. TypeScript Rules

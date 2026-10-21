@@ -19,6 +19,7 @@ Stack: Vite 5 + React 18 + TypeScript 5 (strict) + Vitest 2 + CSS Modules
 Spec-driven workflow:
 - All specs are in .speckit/artifacts/
 - Constitution (inviolable rules) is in .speckit/constitution.md
+- FSD Architecture Guardian: .agents/rules/fsd-architecture.instructions.md & AGENTS.md
 - React TS Guardian rules: .agents/rules/react-typescript.instructions.md & AGENTS.md
 - Each task: READ spec → IMPLEMENT → GATE (typecheck + test:run + lint) → I REVIEW → COMMIT → PUSH
 
@@ -115,17 +116,17 @@ git log --oneline -5
 
 ```
 src/
-├── app/              NoteContext (useReducer + Context)
-├── entities/note/    Note type + noteReducer + NoteCard
+├── app/              NoteProvider + NoteContext
+├── entities/note/    model/ (types, noteReducer) + ui/ (NoteCard)
 ├── features/
-│   ├── create-note/  useCreateNote (double-click → ADD)
-│   ├── move-note/    useMoveNote (useDrag → MOVE)
-│   ├── resize-note/  useResizeNote (useDrag → RESIZE)
-│   └── trash-note/   useTrashZone (pointer-overlap → REMOVE)
+│   ├── create-note/  hooks/ (useCreateNote) + constants/ (noteDefaults)
+│   ├── move-note/    hooks/ (useMoveNote)
+│   ├── resize-note/  hooks/ (useResizeNote) + constants/ (resizeLimits)
+│   └── trash-note/   hooks/ (useTrashZone)
 ├── shared/
-│   ├── lib/          useDrag, NoteRepository, LocalStorageNoteRepository
+│   ├── lib/          useDrag
 │   └── ui/           TrashZone
-└── pages/board/      BoardPage (composition root)
+└── pages/board/      ui/ (BoardPage)
 ```
 
 **Layer rule**: `pages → features → entities → shared` (no upward imports)
