@@ -1,9 +1,9 @@
-import React, { useReducer } from 'react'
+import { useReducer, type ReactNode } from 'react'
 import { noteReducer, type Note } from '@/entities/note'
 import { NoteContext } from './noteContext'
 
 interface NoteProviderProps {
-  children: React.ReactNode
+  children: ReactNode
   initialNotes?: readonly Note[]
 }
 

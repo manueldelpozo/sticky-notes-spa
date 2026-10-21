@@ -1,5 +1,5 @@
 # Task 02 — App State: Context + Provider + Board Page
-## Status: ⬜ TODO
+## Status: ✅ COMPLETE
 
 ---
 

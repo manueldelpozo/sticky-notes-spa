@@ -42,7 +42,7 @@ Please:
   - Spec: `.speckit/artifacts/01-entities-note.md`
   - Gates: `npm run typecheck && npm run test:run && npm run lint`
   - Commit: `feat(entities/note): add Note type, noteReducer, and NoteCard component`
-- [ ] **Task 02** — App state: NoteContext + BoardPage canvas
+- [x] **Task 02** — App state: NoteContext + BoardPage canvas
   - Spec: `.speckit/artifacts/02-board-canvas.md`
   - Gates: `npm run typecheck && npm run test:run && npm run lint`
   - Commit: `feat(app): add NoteContext + BoardPage shell`
