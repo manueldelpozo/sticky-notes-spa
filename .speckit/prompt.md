@@ -80,8 +80,10 @@ Please:
   - Spec: `.speckit/artifacts/08-bonus-text.md`
   - Gates: `npm run typecheck && npm run test:run && npm run lint`
   - Commit: `feat(bonus/text): enable note text editing with UPDATE_TEXT action`
-- [ ] **Bonus II** — Bring to front (z-index)
+- [x] **Bonus II** — Bring to front (z-index)
   - Spec: `.speckit/artifacts/09-bonus-zindex.md`
+  - Gates: `npm run typecheck && npm run test:run && npm run lint`
+  - Commit: `feat(bonus/zindex): click note brings it to front via BRING_TO_FRONT action`
 - [ ] **Bonus IV** — Note colors
   - Spec: `.speckit/artifacts/11-bonus-colors.md`
 - [ ] **Bonus V** — Async REST mock

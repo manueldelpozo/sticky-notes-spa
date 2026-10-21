@@ -1,5 +1,5 @@
 # Task 09 (Bonus II) — Bring Note to Front
-## Status: ⬜ TODO
+## Status: ✅ COMPLETE
 
 ---
 

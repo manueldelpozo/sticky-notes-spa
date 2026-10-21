@@ -103,8 +103,11 @@
   - **Deliverables**: Wire `UPDATE_TEXT` on textarea change, isolated pointer events, keyboard accessibility (`tabIndex={0}`), comprehensive `NoteCard.test.tsx`.
   - **Gates**: Passed (71 tests total)
   - **Commit**: `feat(bonus/text): enable note text editing with UPDATE_TEXT action`
-- [ ] **Bonus II: Bring to Front (Z-Index)**
-  - **Deliverables**: Wire `BRING_TO_FRONT` on card click and drag start.
+- [x] **Bonus II: Bring to Front (Z-Index)**
+  - **Branch**: `feature/09-bonus-zindex`
+  - **Deliverables**: Wire `BRING_TO_FRONT` on card click, drag start, and resize start; test z-index elevation in `BoardPage.test.tsx`.
+  - **Gates**: Passed (72 tests total)
+  - **Commit**: `feat(bonus/zindex): click note brings it to front via BRING_TO_FRONT action`
 - [x] **Bonus III: LocalStorage Persistence**
   - **Branch**: `feature/10-bonus-storage`
   - **Deliverables**: `NoteRepository` abstraction, `LocalStorageNoteRepository` with schema validation/error recovery, `NoteProvider` hydration and debounced auto-save.
