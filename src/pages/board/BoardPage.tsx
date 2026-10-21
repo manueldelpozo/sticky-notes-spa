@@ -1,11 +1,11 @@
 import styles from './BoardPage.module.css'
 import { useNotes } from '@/app'
-import { NoteCard } from '@/entities/note'
 import { useCreateNote } from '@/features/create-note'
 import { TrashZone } from '@/shared/ui'
+import { BoardNoteCard } from './components/BoardNoteCard'
 
 export function BoardPage() {
-  const { notes, dispatch } = useNotes()
+  const { notes } = useNotes()
   const { handleBoardDoubleClick } = useCreateNote()
 
   return (
@@ -15,13 +15,7 @@ export function BoardPage() {
       onDoubleClick={handleBoardDoubleClick}
     >
       {notes.map(note => (
-        <NoteCard
-          key={note.id}
-          note={note}
-          onBringToFront={() => dispatch({ type: 'BRING_TO_FRONT', id: note.id })}
-          onTextChange={text => dispatch({ type: 'UPDATE_TEXT', id: note.id, text })}
-          onColorChange={color => dispatch({ type: 'SET_COLOR', id: note.id, color })}
-        />
+        <BoardNoteCard key={note.id} note={note} />
       ))}
       <TrashZone />
     </main>

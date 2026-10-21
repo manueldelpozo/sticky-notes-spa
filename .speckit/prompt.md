@@ -25,8 +25,8 @@ Spec-driven workflow:
 - React TS Guardian rules: .agents/rules/react-typescript.instructions.md & AGENTS.md
 - Each task: READ spec → IMPLEMENT → GATE (typecheck + test:run + lint) → I REVIEW → COMMIT → PUSH
 
-Current task: Task 05 — Feature: Move note (drag)
-Spec & Plan: .speckit/spec.md (US-2) & .speckit/plan.md
+Current task: Task 06 — Feature: Resize note (drag handle)
+Spec & Plan: .speckit/spec.md (US-3) & .speckit/plan.md
 
 Please:
 1. Read the spec file fully before writing any code
@@ -58,7 +58,7 @@ Please:
   - Spec: `.speckit/artifacts/04-create-note.md`
   - Gates: `npm run typecheck && npm run test:run && npm run lint`
   - Commit: `feat(features/create-note): create note on double-click`
-- [ ] **Task 05** — Feature: Move note (drag)
+- [x] **Task 05** — Feature: Move note (drag)
   - Spec: `.speckit/artifacts/05-move-note.md`
   - Gates: `npm run typecheck && npm run test:run && npm run lint`
   - Commit: `feat(features/move-note): implement note drag-to-move`

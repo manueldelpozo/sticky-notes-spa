@@ -4,8 +4,8 @@ import type { Note, NoteColor } from '../model/types'
 
 interface NoteCardProps {
   note: Note
-  onDragStart?: (event: ReactPointerEvent) => void
-  onResizeStart?: (event: ReactPointerEvent) => void
+  onDragStart?: (event: ReactPointerEvent<HTMLElement>) => void
+  onResizeStart?: (event: ReactPointerEvent<HTMLElement>) => void
   onTextChange?: (text: string) => void
   onColorChange?: (color: NoteColor) => void
   onBringToFront?: () => void

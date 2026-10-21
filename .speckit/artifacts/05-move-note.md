@@ -1,5 +1,5 @@
 # Task 05 — Feature: Move Note (drag)
-## Status: ⬜ TODO
+## Status: ✅ COMPLETE
 
 ---
 
