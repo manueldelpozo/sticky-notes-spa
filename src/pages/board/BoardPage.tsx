@@ -16,6 +16,20 @@ export function BoardPage() {
       data-testid="board"
       onDoubleClick={handleBoardDoubleClick}
     >
+      <header className={styles.shortcutHint} aria-label="Quick instructions">
+        <span>✨ <strong>Double-click</strong> anywhere to create a note</span>
+      </header>
+
+      {notes.length === 0 && (
+        <div className={styles.emptyState} data-testid="empty-board-hint">
+          <div className={styles.emptyIcon} role="img" aria-hidden="true">📝</div>
+          <div className={styles.emptyTitle}>Your board is empty</div>
+          <div className={styles.emptySubtitle}>
+            Double-click anywhere on the canvas to create your first sticky note
+          </div>
+        </div>
+      )}
+
       {notes.map(note => (
         <BoardNoteCard
           key={note.id}

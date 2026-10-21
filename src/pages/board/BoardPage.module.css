@@ -9,3 +9,56 @@
   user-select: none;
   box-sizing: border-box;
 }
+
+.emptyState {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.45);
+  gap: 8px;
+}
+
+.emptyIcon {
+  font-size: 44px;
+  opacity: 0.8;
+  margin-bottom: 2px;
+}
+
+.emptyTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: -0.01em;
+}
+
+.emptySubtitle {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.45);
+  max-width: 320px;
+  line-height: 1.5;
+}
+
+.shortcutHint {
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.65);
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+}
+

@@ -1,6 +1,7 @@
 import { type PointerEvent as ReactPointerEvent } from 'react'
 import styles from './NoteCard.module.css'
 import type { Note, NoteColor } from '../model/types'
+import { NOTE_COLORS, NOTE_COLOR_MAP } from '../constants'
 
 interface NoteCardProps {
   note: Note
@@ -11,8 +12,6 @@ interface NoteCardProps {
   onBringToFront?: () => void
 }
 
-const NOTE_COLORS: NoteColor[] = ['yellow', 'pink', 'blue', 'green']
-
 export function NoteCard({
   note,
   onDragStart,
@@ -22,6 +21,7 @@ export function NoteCard({
   onBringToFront,
 }: NoteCardProps) {
   const { id, position, size, text, color, zIndex } = note
+  const currentColorHex = NOTE_COLOR_MAP[color] ?? NOTE_COLOR_MAP.yellow
 
   return (
     <article
@@ -33,8 +33,8 @@ export function NoteCard({
         width: size.width,
         height: size.height,
         zIndex,
-        // Expose note color as a CSS custom property for theming
-        ['--note-color' as string]: `var(--color-${color})`,
+        backgroundColor: currentColorHex,
+        ['--note-color' as string]: currentColorHex,
       }}
       onClick={onBringToFront}
     >
@@ -46,9 +46,17 @@ export function NoteCard({
           {NOTE_COLORS.map(c => (
             <button
               key={c}
+              type="button"
               className={`${styles.swatch} ${c === color ? styles.swatchActive : ''}`}
-              style={{ ['--swatch-color' as string]: `var(--color-${c})` }}
+              style={{
+                backgroundColor: NOTE_COLOR_MAP[c],
+                ['--swatch-color' as string]: NOTE_COLOR_MAP[c],
+              }}
               aria-label={`Set note color to ${c}`}
+              onPointerDown={event => {
+                event.stopPropagation()
+                onColorChange?.(c)
+              }}
               onClick={event => {
                 event.stopPropagation()
                 onColorChange?.(c)

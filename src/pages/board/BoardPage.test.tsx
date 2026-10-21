@@ -97,7 +97,7 @@ describe('BoardPage', () => {
       toJSON: () => {},
     })
 
-    const noteCard = screen.getByTestId('trash-zone').parentElement?.querySelector('header')
+    const noteCard = screen.getByTestId('trash-zone').parentElement?.querySelector('article header')
     expect(noteCard).toBeInTheDocument()
 
     // 1. Pointer down on note header
@@ -193,7 +193,7 @@ describe('BoardPage', () => {
     const greenSwatch = screen.getByLabelText('Set note color to green')
     fireEvent.click(greenSwatch)
 
-    // Note color custom property is updated to var(--color-green)
-    expect(card).toHaveStyle({ '--note-color': 'var(--color-green)' })
+    // Note color is updated to green hex (#86efac)
+    expect(card).toHaveStyle({ backgroundColor: '#86efac' })
   })
 })

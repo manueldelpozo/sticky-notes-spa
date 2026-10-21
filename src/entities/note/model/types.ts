@@ -1,3 +1,5 @@
+import type { NoteColor } from '../constants'
+
 export interface Position {
   x: number
   y: number
@@ -8,7 +10,7 @@ export interface Size {
   height: number
 }
 
-export type NoteColor = 'yellow' | 'pink' | 'blue' | 'green'
+export type { NoteColor }
 
 export interface Note {
   readonly id: string
