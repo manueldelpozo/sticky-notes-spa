@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import type { PropsWithChildren } from 'react'
 import { describe, it, expect, vi } from 'vitest'
 import { renderHook, act } from '@testing-library/react'
 import { NoteProvider } from './NoteProvider'
@@ -17,7 +17,7 @@ describe('NoteContext', () => {
   })
 
   it('provides empty notes array as default initial state', () => {
-    const wrapper = ({ children }: { children: ReactNode }) => (
+    const wrapper = ({ children }: PropsWithChildren) => (
       <NoteProvider>{children}</NoteProvider>
     )
 
@@ -40,7 +40,7 @@ describe('NoteContext', () => {
       },
     ]
 
-    const wrapper = ({ children }: { children: ReactNode }) => (
+    const wrapper = ({ children }: PropsWithChildren) => (
       <NoteProvider initialNotes={initialNotes}>{children}</NoteProvider>
     )
 
@@ -50,7 +50,7 @@ describe('NoteContext', () => {
   })
 
   it('updates state when dispatching an ADD action', () => {
-    const wrapper = ({ children }: { children: ReactNode }) => (
+    const wrapper = ({ children }: PropsWithChildren) => (
       <NoteProvider>{children}</NoteProvider>
     )
 

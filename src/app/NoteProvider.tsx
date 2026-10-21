@@ -1,11 +1,10 @@
-import { useReducer, type ReactNode } from 'react'
+import { useReducer, type PropsWithChildren } from 'react'
 import { noteReducer, type Note } from '@/entities/note'
 import { NoteContext } from './noteContext'
 
-interface NoteProviderProps {
-  children: ReactNode
+type NoteProviderProps = PropsWithChildren<{
   initialNotes?: readonly Note[]
-}
+}>
 
 export function NoteProvider({ children, initialNotes = [] }: NoteProviderProps) {
   const [notes, dispatch] = useReducer(noteReducer, initialNotes)
