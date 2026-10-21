@@ -1,5 +1,5 @@
 # Task 06 — Feature: Resize Note (drag)
-## Status: ⬜ TODO
+## Status: ✅ COMPLETE
 
 ---
 
