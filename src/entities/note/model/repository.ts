@@ -1,6 +1,6 @@
-import type { Note } from './types'
+import type { INote } from './types'
 
-export interface NoteRepository {
-  loadNotes(): Promise<readonly Note[]>
-  saveNotes(notes: readonly Note[]): Promise<void>
+export interface INoteRepository {
+  loadNotes(): Promise<readonly INote[]>
+  saveNotes(notes: readonly INote[]): Promise<void>
 }

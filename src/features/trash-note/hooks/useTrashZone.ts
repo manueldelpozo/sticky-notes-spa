@@ -1,8 +1,8 @@
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, type RefObject } from 'react'
 import { useNotes } from '@/app'
 
-export interface UseTrashZoneReturn {
-  trashRef: React.RefObject<HTMLDivElement>
+export interface IUseTrashZoneReturn {
+  trashRef: RefObject<HTMLDivElement>
   isOver: boolean
   checkOverlap: (clientX: number, clientY: number) => boolean
   handleDrop: (noteId: string, clientX: number, clientY: number) => boolean
@@ -13,7 +13,7 @@ export interface UseTrashZoneReturn {
  * Hook to manage trash zone bounding box detection, hover state, and drop-to-delete.
  * Uses a ref-based approach for bounding client rect intersection to avoid external drag context overhead.
  */
-export function useTrashZone(): UseTrashZoneReturn {
+export function useTrashZone(): IUseTrashZoneReturn {
   const { dispatch } = useNotes()
   const [isOver, setIsOver] = useState(false)
   const trashRef = useRef<HTMLDivElement>(null)

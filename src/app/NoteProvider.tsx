@@ -1,17 +1,17 @@
 import { useReducer, useEffect, useRef, type PropsWithChildren } from 'react'
-import { noteReducer, type Note, type NoteRepository } from '@/entities/note'
+import { noteReducer, type INote, type INoteRepository } from '@/entities/note'
 import { NoteContext } from './noteContext'
 
-export type NoteProviderProps = PropsWithChildren<{
-  initialNotes?: readonly Note[]
-  repository?: NoteRepository
+export type TNoteProviderProps = PropsWithChildren<{
+  initialNotes?: readonly INote[]
+  repository?: INoteRepository
 }>
 
 export function NoteProvider({
   children,
   initialNotes = [],
   repository,
-}: NoteProviderProps) {
+}: TNoteProviderProps) {
   const [notes, dispatch] = useReducer(noteReducer, initialNotes)
   const isHydratedRef = useRef(false)
   const isHydratingActionRef = useRef(false)

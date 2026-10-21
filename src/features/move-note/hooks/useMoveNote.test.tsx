@@ -1,9 +1,9 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { renderHook, act } from '@testing-library/react'
 import { type PropsWithChildren, type PointerEvent as ReactPointerEvent } from 'react'
-import { NoteContext, type NoteContextValue } from '@/app'
+import { NoteContext, type INoteContextValue } from '@/app'
 import { useMoveNote } from './useMoveNote'
-import type { Note } from '@/entities/note'
+import type { INote } from '@/entities/note'
 
 describe('useMoveNote', () => {
   let mockElement: HTMLElement
@@ -30,7 +30,7 @@ describe('useMoveNote', () => {
       preventDefault: vi.fn(),
     }) as unknown as ReactPointerEvent<HTMLElement>
 
-  const existingNote: Note = {
+  const existingNote: INote = {
     id: 'note-1',
     position: { x: 50, y: 80 },
     size: { width: 200, height: 180 },
@@ -42,7 +42,7 @@ describe('useMoveNote', () => {
 
   it('dispatches BRING_TO_FRONT on drag start', () => {
     const dispatch = vi.fn()
-    const contextValue: NoteContextValue = {
+    const contextValue: INoteContextValue = {
       notes: [existingNote],
       dispatch,
     }
@@ -72,7 +72,7 @@ describe('useMoveNote', () => {
 
   it('dispatches MOVE with accumulated position on drag move', () => {
     const dispatch = vi.fn()
-    const contextValue: NoteContextValue = {
+    const contextValue: INoteContextValue = {
       notes: [existingNote],
       dispatch,
     }
@@ -110,7 +110,7 @@ describe('useMoveNote', () => {
 
   it('accumulates multiple consecutive drag moves correctly', () => {
     const dispatch = vi.fn()
-    const contextValue: NoteContextValue = {
+    const contextValue: INoteContextValue = {
       notes: [existingNote],
       dispatch,
     }

@@ -1,2 +1,2 @@
 export { useTrashZone } from './hooks/useTrashZone'
-export type { UseTrashZoneReturn } from './hooks/useTrashZone'
+export type { IUseTrashZoneReturn } from './hooks/useTrashZone'

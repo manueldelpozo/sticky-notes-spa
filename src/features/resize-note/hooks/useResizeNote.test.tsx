@@ -1,10 +1,10 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { renderHook, act } from '@testing-library/react'
 import { type PropsWithChildren, type PointerEvent as ReactPointerEvent } from 'react'
-import { NoteContext, type NoteContextValue } from '@/app'
+import { NoteContext, type INoteContextValue } from '@/app'
 import { useResizeNote } from './useResizeNote'
 import { MIN_NOTE_SIZE } from '../constants/resizeLimits'
-import type { Note } from '@/entities/note'
+import type { INote } from '@/entities/note'
 
 describe('useResizeNote', () => {
   let mockElement: HTMLElement
@@ -31,7 +31,7 @@ describe('useResizeNote', () => {
       preventDefault: vi.fn(),
     }) as unknown as ReactPointerEvent<HTMLElement>
 
-  const existingNote: Note = {
+  const existingNote: INote = {
     id: 'note-1',
     position: { x: 50, y: 80 },
     size: { width: 200, height: 180 },
@@ -43,7 +43,7 @@ describe('useResizeNote', () => {
 
   it('dispatches BRING_TO_FRONT on resize start', () => {
     const dispatch = vi.fn()
-    const contextValue: NoteContextValue = {
+    const contextValue: INoteContextValue = {
       notes: [existingNote],
       dispatch,
     }
@@ -73,7 +73,7 @@ describe('useResizeNote', () => {
 
   it('dispatches RESIZE with correct accumulated size on drag move', () => {
     const dispatch = vi.fn()
-    const contextValue: NoteContextValue = {
+    const contextValue: INoteContextValue = {
       notes: [existingNote],
       dispatch,
     }
@@ -104,7 +104,7 @@ describe('useResizeNote', () => {
 
   it('enforces minimum width (120px) and minimum height (100px) when resized smaller', () => {
     const dispatch = vi.fn()
-    const contextValue: NoteContextValue = {
+    const contextValue: INoteContextValue = {
       notes: [existingNote],
       dispatch,
     }
@@ -136,7 +136,7 @@ describe('useResizeNote', () => {
 
   it('accumulates multiple consecutive drag moves correctly with size clamping', () => {
     const dispatch = vi.fn()
-    const contextValue: NoteContextValue = {
+    const contextValue: INoteContextValue = {
       notes: [existingNote],
       dispatch,
     }

@@ -1,26 +1,26 @@
-import type { Note, NoteColor, CreateNoteParams, Position, Size } from './types'
+import type { INote, TNoteColor, TCreateNoteParams, IPosition, ISize } from './types'
 
-export type NoteAction =
-  | { type: 'ADD'; payload: CreateNoteParams }
-  | { type: 'MOVE'; id: string; position: Position }
-  | { type: 'RESIZE'; id: string; size: Size }
+export type TNoteAction =
+  | { type: 'ADD'; payload: TCreateNoteParams }
+  | { type: 'MOVE'; id: string; position: IPosition }
+  | { type: 'RESIZE'; id: string; size: ISize }
   | { type: 'REMOVE'; id: string }
   | { type: 'UPDATE_TEXT'; id: string; text: string }
   | { type: 'BRING_TO_FRONT'; id: string }
-  | { type: 'SET_COLOR'; id: string; color: NoteColor }
-  | { type: 'SET_ALL'; notes: readonly Note[] }
+  | { type: 'SET_COLOR'; id: string; color: TNoteColor }
+  | { type: 'SET_ALL'; notes: readonly INote[] }
 
-function maxZIndex(notes: readonly Note[]): number {
+function maxZIndex(notes: readonly INote[]): number {
   return notes.reduce((max, n) => Math.max(max, n.zIndex), 0)
 }
 
 export function noteReducer(
-  state: readonly Note[],
-  action: NoteAction,
-): readonly Note[] {
+  state: readonly INote[],
+  action: TNoteAction,
+): readonly INote[] {
   switch (action.type) {
     case 'ADD': {
-      const note: Note = {
+      const note: INote = {
         ...action.payload,
         id: crypto.randomUUID(),
         zIndex: maxZIndex(state) + 1,

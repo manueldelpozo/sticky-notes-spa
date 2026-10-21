@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { noteReducer } from './noteReducer'
-import type { Note, CreateNoteParams } from './types'
+import type { INote, TCreateNoteParams } from './types'
 
 // Stable UUID for deterministic tests
 const MOCK_UUID = 'test-uuid-1234'
@@ -9,14 +9,14 @@ beforeEach(() => {
   vi.stubGlobal('crypto', { randomUUID: vi.fn(() => MOCK_UUID) })
 })
 
-const baseParams: CreateNoteParams = {
+const baseParams: TCreateNoteParams = {
   position: { x: 100, y: 200 },
   size: { width: 200, height: 180 },
   text: '',
   color: 'yellow',
 }
 
-const existingNote: Note = {
+const existingNote: INote = {
   id: 'note-1',
   position: { x: 50, y: 60 },
   size: { width: 150, height: 120 },
@@ -53,7 +53,7 @@ describe('noteReducer', () => {
     })
 
     it('does not mutate the original state array', () => {
-      const original: readonly Note[] = []
+      const original: readonly INote[] = []
       noteReducer(original, { type: 'ADD', payload: baseParams })
       expect(original).toHaveLength(0)
     })
@@ -82,7 +82,7 @@ describe('noteReducer', () => {
     })
 
     it('does not affect other notes', () => {
-      const other: Note = { ...existingNote, id: 'note-2', zIndex: 2 }
+      const other: INote = { ...existingNote, id: 'note-2', zIndex: 2 }
       const state = noteReducer([existingNote, other], {
         type: 'MOVE',
         id: 'note-1',
@@ -122,7 +122,7 @@ describe('noteReducer', () => {
     })
 
     it('leaves other notes untouched', () => {
-      const other: Note = { ...existingNote, id: 'note-2' }
+      const other: INote = { ...existingNote, id: 'note-2' }
       const state = noteReducer([existingNote, other], {
         type: 'REMOVE',
         id: 'note-1',
@@ -165,7 +165,7 @@ describe('noteReducer', () => {
 
   describe('BRING_TO_FRONT action', () => {
     it('sets zIndex to max + 1', () => {
-      const other: Note = { ...existingNote, id: 'note-2', zIndex: 5 }
+      const other: INote = { ...existingNote, id: 'note-2', zIndex: 5 }
       const state = noteReducer([existingNote, other], {
         type: 'BRING_TO_FRONT',
         id: 'note-1',
@@ -174,7 +174,7 @@ describe('noteReducer', () => {
     })
 
     it('leaves other notes zIndex unchanged', () => {
-      const other: Note = { ...existingNote, id: 'note-2', zIndex: 5 }
+      const other: INote = { ...existingNote, id: 'note-2', zIndex: 5 }
       const state = noteReducer([existingNote, other], {
         type: 'BRING_TO_FRONT',
         id: 'note-1',
@@ -208,7 +208,7 @@ describe('noteReducer', () => {
 
   describe('SET_ALL action', () => {
     it('replaces entire state with provided notes', () => {
-      const newNotes: readonly Note[] = [
+      const newNotes: readonly INote[] = [
         { ...existingNote, id: 'hydrated-1' },
         { ...existingNote, id: 'hydrated-2' },
       ]

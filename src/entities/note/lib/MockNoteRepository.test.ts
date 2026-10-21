@@ -1,9 +1,9 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { MockNoteRepository } from './MockNoteRepository'
-import type { Note } from '../model/types'
+import type { INote } from '../model/types'
 
 describe('MockNoteRepository', () => {
-  const sampleNote: Note = {
+  const sampleNote: INote = {
     id: 'mock-1',
     position: { x: 100, y: 120 },
     size: { width: 200, height: 180 },
@@ -44,7 +44,7 @@ describe('MockNoteRepository', () => {
   it('saveNotes updates the store and subsequent loadNotes returns updated notes', async () => {
     const repository = new MockNoteRepository([], 150)
 
-    const updatedNotes: readonly Note[] = [
+    const updatedNotes: readonly INote[] = [
       sampleNote,
       {
         ...sampleNote,

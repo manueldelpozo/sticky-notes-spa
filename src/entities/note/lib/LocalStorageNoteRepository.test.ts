@@ -1,11 +1,11 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { LocalStorageNoteRepository, STORAGE_KEY } from './LocalStorageNoteRepository'
-import type { Note } from '../model/types'
+import type { INote } from '../model/types'
 
 describe('LocalStorageNoteRepository', () => {
   let repository: LocalStorageNoteRepository
 
-  const sampleNote: Note = {
+  const sampleNote: INote = {
     id: 'note-1',
     position: { x: 50, y: 100 },
     size: { width: 200, height: 180 },

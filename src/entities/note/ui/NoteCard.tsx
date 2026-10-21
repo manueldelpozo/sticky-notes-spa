@@ -1,14 +1,14 @@
 import { type PointerEvent as ReactPointerEvent } from 'react'
 import styles from './NoteCard.module.css'
-import type { Note, NoteColor } from '../model/types'
+import type { INote, TNoteColor } from '../model/types'
 import { NOTE_COLORS, NOTE_COLOR_MAP } from '../constants'
 
-interface NoteCardProps {
-  note: Note
+interface INoteCardProps {
+  note: INote
   onDragStart?: (event: ReactPointerEvent<HTMLElement>) => void
   onResizeStart?: (event: ReactPointerEvent<HTMLElement>) => void
   onTextChange?: (text: string) => void
-  onColorChange?: (color: NoteColor) => void
+  onColorChange?: (color: TNoteColor) => void
   onBringToFront?: () => void
 }
 
@@ -19,7 +19,7 @@ export function NoteCard({
   onTextChange,
   onColorChange,
   onBringToFront,
-}: NoteCardProps) {
+}: INoteCardProps) {
   const { id, position, size, text, color, zIndex } = note
   const currentColorHex = NOTE_COLOR_MAP[color] ?? NOTE_COLOR_MAP.yellow
 

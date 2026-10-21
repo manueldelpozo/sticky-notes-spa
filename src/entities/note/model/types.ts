@@ -1,25 +1,25 @@
-import type { NoteColor } from '../constants'
+import type { TNoteColor } from '../constants'
 
-export interface Position {
+export interface IPosition {
   x: number
   y: number
 }
 
-export interface Size {
+export interface ISize {
   width: number
   height: number
 }
 
-export type { NoteColor }
+export type { TNoteColor }
 
-export interface Note {
+export interface INote {
   readonly id: string
-  readonly position: Position
-  readonly size: Size
+  readonly position: IPosition
+  readonly size: ISize
   readonly text: string
-  readonly color: NoteColor
+  readonly color: TNoteColor
   readonly zIndex: number
   readonly createdAt: number
 }
 
-export type CreateNoteParams = Omit<Note, 'id' | 'createdAt' | 'zIndex'>
+export type TCreateNoteParams = Omit<INote, 'id' | 'createdAt' | 'zIndex'>

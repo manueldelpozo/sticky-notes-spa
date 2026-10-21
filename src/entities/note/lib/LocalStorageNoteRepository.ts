@@ -1,9 +1,9 @@
-import type { Note } from '../model/types'
-import type { NoteRepository } from '../model/repository'
+import type { INote } from '../model/types'
+import type { INoteRepository } from '../model/repository'
 
 export const STORAGE_KEY = 'sticky-notes'
 
-export class LocalStorageNoteRepository implements NoteRepository {
+export class LocalStorageNoteRepository implements INoteRepository {
   private readonly storageKey: string
 
   constructor(storageKey = STORAGE_KEY) {
@@ -20,7 +20,7 @@ export class LocalStorageNoteRepository implements NoteRepository {
     return undefined
   }
 
-  async loadNotes(): Promise<readonly Note[]> {
+  async loadNotes(): Promise<readonly INote[]> {
     try {
       const storage = this.getStorage()
       if (!storage) return []
@@ -37,7 +37,7 @@ export class LocalStorageNoteRepository implements NoteRepository {
     }
   }
 
-  async saveNotes(notes: readonly Note[]): Promise<void> {
+  async saveNotes(notes: readonly INote[]): Promise<void> {
     try {
       const storage = this.getStorage()
       if (!storage) return
@@ -49,7 +49,7 @@ export class LocalStorageNoteRepository implements NoteRepository {
   }
 }
 
-function isValidNote(item: unknown): item is Note {
+function isValidNote(item: unknown): item is INote {
   if (!item || typeof item !== 'object') return false
   const candidate = item as Record<string, unknown>
   const position = candidate.position as Record<string, unknown> | undefined

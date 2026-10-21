@@ -1,10 +1,10 @@
 import { describe, it, expect, vi } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { NoteCard } from './NoteCard'
-import type { Note } from '../model/types'
+import type { INote } from '../model/types'
 
 describe('NoteCard', () => {
-  const sampleNote: Note = {
+  const sampleNote: INote = {
     id: 'note-1',
     position: { x: 50, y: 80 },
     size: { width: 220, height: 180 },
