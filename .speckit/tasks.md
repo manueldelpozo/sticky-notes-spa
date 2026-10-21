@@ -118,8 +118,11 @@
   - **Deliverables**: Connect color swatches in header to dispatch `SET_COLOR`, verify color updating via `BoardPage.test.tsx`.
   - **Gates**: Passed (73 tests total)
   - **Commit**: `feat(bonus/colors): add note color picker with SET_COLOR action`
-- [ ] **Bonus V: Async REST Mock**
-  - **Deliverables**: Artificial latency repository simulating backend API.
+- [x] **Bonus V: Async REST Mock**
+  - **Branch**: `feature/12-bonus-api-mock`
+  - **Deliverables**: `MockNoteRepository` simulating network latency with fake timer tests; interchangeable with `LocalStorageNoteRepository`.
+  - **Gates**: Passed (76 tests total)
+  - **Commit**: `feat(bonus/api-mock): add MockNoteRepository with simulated async REST delays`
 
 ---
 

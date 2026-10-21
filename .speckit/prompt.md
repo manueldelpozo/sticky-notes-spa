@@ -88,8 +88,10 @@ Please:
   - Spec: `.speckit/artifacts/11-bonus-colors.md`
   - Gates: `npm run typecheck && npm run test:run && npm run lint`
   - Commit: `feat(bonus/colors): add note color picker with SET_COLOR action`
-- [ ] **Bonus V** — Async REST mock
+- [x] **Bonus V** — Async REST mock
   - Spec: `.speckit/artifacts/12-bonus-api-mock.md`
+  - Gates: `npm run typecheck && npm run test:run && npm run lint`
+  - Commit: `feat(bonus/api-mock): add MockNoteRepository with simulated async REST delays`
 
 ---
 
