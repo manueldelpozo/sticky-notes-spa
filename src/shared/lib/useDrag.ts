@@ -6,29 +6,29 @@ import {
   type PointerEvent as ReactPointerEvent,
 } from 'react'
 
-export interface DragDelta {
+export interface IDragDelta {
   dx: number
   dy: number
 }
 
-export interface UseDragOptions {
+export interface IUseDragOptions {
   onDragStart?: (event: PointerEvent) => void
-  onDragMove?: (delta: DragDelta, event: PointerEvent) => void
+  onDragMove?: (delta: IDragDelta, event: PointerEvent) => void
   onDragEnd?: (event: PointerEvent) => void
   /** Minimum pixel movement before drag is recognized (default: 3) */
   threshold?: number
 }
 
-export interface UseDragReturn {
+export interface IUseDragReturn {
   isDragging: boolean
   handlePointerDown: (event: ReactPointerEvent<HTMLElement>) => void
 }
 
-export function useDrag(options: UseDragOptions = {}): UseDragReturn {
+export function useDrag(options: IUseDragOptions = {}): IUseDragReturn {
   const [isDragging, setIsDragging] = useState(false)
 
   // Keep latest callbacks in ref to avoid reattaching listeners on every render
-  const optionsRef = useRef<UseDragOptions>(options)
+  const optionsRef = useRef<IUseDragOptions>(options)
   useEffect(() => {
     optionsRef.current = options
   }, [options])

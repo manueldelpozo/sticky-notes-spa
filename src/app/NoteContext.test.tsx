@@ -3,7 +3,7 @@ import { describe, it, expect, vi } from 'vitest'
 import { renderHook, act, waitFor } from '@testing-library/react'
 import { NoteProvider } from './NoteProvider'
 import { useNotes } from './noteContext'
-import type { Note } from '@/entities/note'
+import type { INote } from '@/entities/note'
 
 describe('NoteContext', () => {
   it('throws an error if useNotes is used outside of NoteProvider', () => {
@@ -28,7 +28,7 @@ describe('NoteContext', () => {
   })
 
   it('accepts initialNotes for pre-hydration', () => {
-    const initialNotes: readonly Note[] = [
+    const initialNotes: readonly INote[] = [
       {
         id: 'test-1',
         position: { x: 50, y: 50 },
@@ -75,7 +75,7 @@ describe('NoteContext', () => {
   })
 
   it('hydrates notes from repository on mount', async () => {
-    const savedNotes: readonly Note[] = [
+    const savedNotes: readonly INote[] = [
       {
         id: 'saved-1',
         position: { x: 30, y: 40 },

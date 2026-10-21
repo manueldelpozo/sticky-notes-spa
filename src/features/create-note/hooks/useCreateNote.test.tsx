@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest'
 import { renderHook, act } from '@testing-library/react'
 import { type PropsWithChildren, type MouseEvent as ReactMouseEvent } from 'react'
-import { NoteContext, type NoteContextValue } from '@/app'
+import { NoteContext, type INoteContextValue } from '@/app'
 import { useCreateNote } from './useCreateNote'
 import { DEFAULT_NOTE_SIZE } from '../constants/noteDefaults'
 
@@ -21,7 +21,7 @@ describe('useCreateNote', () => {
 
   it('dispatches ADD with relative position on empty canvas double click', () => {
     const dispatch = vi.fn()
-    const contextValue: NoteContextValue = {
+    const contextValue: INoteContextValue = {
       notes: [],
       dispatch,
     }
@@ -59,7 +59,7 @@ describe('useCreateNote', () => {
 
   it('does NOT dispatch ADD when double-clicking on a note', () => {
     const dispatch = vi.fn()
-    const contextValue: NoteContextValue = {
+    const contextValue: INoteContextValue = {
       notes: [],
       dispatch,
     }
@@ -87,7 +87,7 @@ describe('useCreateNote', () => {
 
   it('does NOT dispatch ADD when double-clicking on the trash zone', () => {
     const dispatch = vi.fn()
-    const contextValue: NoteContextValue = {
+    const contextValue: INoteContextValue = {
       notes: [],
       dispatch,
     }

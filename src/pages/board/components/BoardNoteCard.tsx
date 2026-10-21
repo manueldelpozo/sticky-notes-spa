@@ -1,10 +1,10 @@
 import { useNotes } from '@/app'
-import { NoteCard, type Note } from '@/entities/note'
+import { NoteCard, type INote } from '@/entities/note'
 import { useMoveNote } from '@/features/move-note'
 import { useResizeNote } from '@/features/resize-note'
 
-export interface BoardNoteCardProps {
-  note: Note
+export interface IBoardNoteCardProps {
+  note: INote
   onDragMove?: (event: PointerEvent) => void
   onDragEnd?: (event: PointerEvent) => void
 }
@@ -13,7 +13,7 @@ export function BoardNoteCard({
   note,
   onDragMove,
   onDragEnd,
-}: BoardNoteCardProps) {
+}: IBoardNoteCardProps) {
   const { dispatch } = useNotes()
   const { handleDragStart } = useMoveNote(note.id, {
     onDragMove: (_delta, event) => onDragMove?.(event),

@@ -2,11 +2,11 @@ import { useCallback, type MouseEvent as ReactMouseEvent } from 'react'
 import { useNotes } from '@/app'
 import { DEFAULT_NOTE_SIZE } from '../constants/noteDefaults'
 
-export interface UseCreateNoteReturn {
+export interface IUseCreateNoteReturn {
   handleBoardDoubleClick: (event: ReactMouseEvent<HTMLElement>) => void
 }
 
-export function useCreateNote(): UseCreateNoteReturn {
+export function useCreateNote(): IUseCreateNoteReturn {
   const { dispatch } = useNotes()
 
   const handleBoardDoubleClick = useCallback(

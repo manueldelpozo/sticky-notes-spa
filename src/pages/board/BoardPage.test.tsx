@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { NoteProvider } from '@/app'
 import { BoardPage } from './BoardPage'
-import type { Note } from '@/entities/note'
+import type { INote } from '@/entities/note'
 
 describe('BoardPage', () => {
   it('renders the board canvas and trash zone when empty', () => {
@@ -17,7 +17,7 @@ describe('BoardPage', () => {
   })
 
   it('renders note cards for each note in state', () => {
-    const notes: readonly Note[] = [
+    const notes: readonly INote[] = [
       {
         id: 'note-1',
         position: { x: 50, y: 80 },
@@ -64,7 +64,7 @@ describe('BoardPage', () => {
   })
 
   it('removes a note when dragged and dropped onto the trash zone', () => {
-    const notes: readonly Note[] = [
+    const notes: readonly INote[] = [
       {
         id: 'note-1',
         position: { x: 50, y: 80 },
@@ -97,7 +97,7 @@ describe('BoardPage', () => {
       toJSON: () => {},
     })
 
-    const noteCard = screen.getByTestId('trash-zone').parentElement?.querySelector('header')
+    const noteCard = screen.getByTestId('trash-zone').parentElement?.querySelector('article header')
     expect(noteCard).toBeInTheDocument()
 
     // 1. Pointer down on note header
@@ -127,7 +127,7 @@ describe('BoardPage', () => {
   })
 
   it('brings a note to front when clicked, elevating its z-index', () => {
-    const notes: readonly Note[] = [
+    const notes: readonly INote[] = [
       {
         id: 'note-1',
         position: { x: 50, y: 80 },
@@ -168,7 +168,7 @@ describe('BoardPage', () => {
   })
 
   it('changes note color when a color swatch is clicked', () => {
-    const notes: readonly Note[] = [
+    const notes: readonly INote[] = [
       {
         id: 'note-1',
         position: { x: 50, y: 80 },
@@ -193,7 +193,7 @@ describe('BoardPage', () => {
     const greenSwatch = screen.getByLabelText('Set note color to green')
     fireEvent.click(greenSwatch)
 
-    // Note color custom property is updated to var(--color-green)
-    expect(card).toHaveStyle({ '--note-color': 'var(--color-green)' })
+    // Note color is updated to green hex (#86efac)
+    expect(card).toHaveStyle({ backgroundColor: '#86efac' })
   })
 })

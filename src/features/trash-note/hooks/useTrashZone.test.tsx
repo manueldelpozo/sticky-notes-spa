@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest'
 import { renderHook, act } from '@testing-library/react'
 import { type PropsWithChildren } from 'react'
-import { NoteContext, type NoteContextValue } from '@/app'
+import { NoteContext, type INoteContextValue } from '@/app'
 import { useTrashZone } from './useTrashZone'
 
 describe('useTrashZone', () => {
@@ -25,7 +25,7 @@ describe('useTrashZone', () => {
 
   it('initializes with isOver false', () => {
     const dispatch = vi.fn()
-    const contextValue: NoteContextValue = { notes: [], dispatch }
+    const contextValue: INoteContextValue = { notes: [], dispatch }
     const wrapper = ({ children }: PropsWithChildren) => (
       <NoteContext.Provider value={contextValue}>{children}</NoteContext.Provider>
     )
@@ -38,7 +38,7 @@ describe('useTrashZone', () => {
 
   it('detects overlap when pointer is inside trash zone bounds', () => {
     const dispatch = vi.fn()
-    const contextValue: NoteContextValue = { notes: [], dispatch }
+    const contextValue: INoteContextValue = { notes: [], dispatch }
     const wrapper = ({ children }: PropsWithChildren) => (
       <NoteContext.Provider value={contextValue}>{children}</NoteContext.Provider>
     )
@@ -59,7 +59,7 @@ describe('useTrashZone', () => {
 
   it('sets isOver false when pointer is outside trash zone bounds', () => {
     const dispatch = vi.fn()
-    const contextValue: NoteContextValue = { notes: [], dispatch }
+    const contextValue: INoteContextValue = { notes: [], dispatch }
     const wrapper = ({ children }: PropsWithChildren) => (
       <NoteContext.Provider value={contextValue}>{children}</NoteContext.Provider>
     )
@@ -79,7 +79,7 @@ describe('useTrashZone', () => {
 
   it('dispatches REMOVE action when note is dropped inside trash zone', () => {
     const dispatch = vi.fn()
-    const contextValue: NoteContextValue = { notes: [], dispatch }
+    const contextValue: INoteContextValue = { notes: [], dispatch }
     const wrapper = ({ children }: PropsWithChildren) => (
       <NoteContext.Provider value={contextValue}>{children}</NoteContext.Provider>
     )
@@ -103,7 +103,7 @@ describe('useTrashZone', () => {
 
   it('does not dispatch REMOVE when note is dropped outside trash zone', () => {
     const dispatch = vi.fn()
-    const contextValue: NoteContextValue = { notes: [], dispatch }
+    const contextValue: INoteContextValue = { notes: [], dispatch }
     const wrapper = ({ children }: PropsWithChildren) => (
       <NoteContext.Provider value={contextValue}>{children}</NoteContext.Provider>
     )
@@ -124,7 +124,7 @@ describe('useTrashZone', () => {
 
   it('resets isOver to false when resetTrash is called', () => {
     const dispatch = vi.fn()
-    const contextValue: NoteContextValue = { notes: [], dispatch }
+    const contextValue: INoteContextValue = { notes: [], dispatch }
     const wrapper = ({ children }: PropsWithChildren) => (
       <NoteContext.Provider value={contextValue}>{children}</NoteContext.Provider>
     )

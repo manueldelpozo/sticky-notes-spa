@@ -1,19 +1,19 @@
 import { useRef, useEffect, type PointerEvent as ReactPointerEvent } from 'react'
 import { useNotes } from '@/app'
-import { useDrag, type DragDelta } from '@/shared/lib'
-import type { Size } from '@/entities/note'
+import { useDrag, type IDragDelta } from '@/shared/lib'
+import type { ISize } from '@/entities/note'
 import { MIN_NOTE_SIZE } from '../constants/resizeLimits'
 
-export interface UseResizeNoteReturn {
+export interface IUseResizeNoteReturn {
   handleResizeStart: (event: ReactPointerEvent<HTMLElement>) => void
   isResizing: boolean
 }
 
-export function useResizeNote(noteId: string): UseResizeNoteReturn {
+export function useResizeNote(noteId: string): IUseResizeNoteReturn {
   const { notes, dispatch } = useNotes()
 
   const note = notes.find(targetNote => targetNote.id === noteId)
-  const currentSizeRef = useRef<Size>(note?.size ?? MIN_NOTE_SIZE)
+  const currentSizeRef = useRef<ISize>(note?.size ?? MIN_NOTE_SIZE)
 
   useEffect(() => {
     if (note) {
@@ -25,8 +25,8 @@ export function useResizeNote(noteId: string): UseResizeNoteReturn {
     onDragStart: () => {
       dispatch({ type: 'BRING_TO_FRONT', id: noteId })
     },
-    onDragMove: (delta: DragDelta) => {
-      const nextSize: Size = {
+    onDragMove: (delta: IDragDelta) => {
+      const nextSize: ISize = {
         width: Math.max(MIN_NOTE_SIZE.width, currentSizeRef.current.width + delta.dx),
         height: Math.max(MIN_NOTE_SIZE.height, currentSizeRef.current.height + delta.dy),
       }

@@ -1,11 +1,11 @@
 import { forwardRef } from 'react'
 import styles from './TrashZone.module.css'
 
-export interface TrashZoneProps {
+export interface ITrashZoneProps {
   isOver?: boolean
 }
 
-export const TrashZone = forwardRef<HTMLDivElement, TrashZoneProps>(
+export const TrashZone = forwardRef<HTMLDivElement, ITrashZoneProps>(
   function TrashZone({ isOver = false }, ref) {
     return (
       <div
