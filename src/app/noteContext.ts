@@ -1,9 +1,9 @@
-import { createContext, useContext } from 'react'
+import { createContext, useContext, type Dispatch } from 'react'
 import type { Note, NoteAction } from '@/entities/note'
 
 export interface NoteContextValue {
   notes: readonly Note[]
-  dispatch: React.Dispatch<NoteAction>
+  dispatch: Dispatch<NoteAction>
 }
 
 export const NoteContext = createContext<NoteContextValue | undefined>(undefined)

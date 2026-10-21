@@ -1,10 +1,11 @@
+import { type PointerEvent as ReactPointerEvent } from 'react'
 import styles from './NoteCard.module.css'
 import type { Note, NoteColor } from '../model/types'
 
 interface NoteCardProps {
   note: Note
-  onDragStart?: (e: React.PointerEvent) => void
-  onResizeStart?: (e: React.PointerEvent) => void
+  onDragStart?: (event: ReactPointerEvent) => void
+  onResizeStart?: (event: ReactPointerEvent) => void
   onTextChange?: (text: string) => void
   onColorChange?: (color: NoteColor) => void
   onBringToFront?: () => void
@@ -48,8 +49,8 @@ export function NoteCard({
               className={`${styles.swatch} ${c === color ? styles.swatchActive : ''}`}
               style={{ ['--swatch-color' as string]: `var(--color-${c})` }}
               aria-label={`Set note color to ${c}`}
-              onClick={e => {
-                e.stopPropagation()
+              onClick={event => {
+                event.stopPropagation()
                 onColorChange?.(c)
               }}
             />
@@ -61,15 +62,15 @@ export function NoteCard({
         className={styles.textarea}
         value={text}
         placeholder="Type a note…"
-        onChange={e => onTextChange?.(e.target.value)}
-        onPointerDown={e => e.stopPropagation()}
+        onChange={event => onTextChange?.(event.target.value)}
+        onPointerDown={event => event.stopPropagation()}
       />
 
       <div
         className={styles.resizeHandle}
-        onPointerDown={e => {
-          e.stopPropagation()
-          onResizeStart?.(e)
+        onPointerDown={event => {
+          event.stopPropagation()
+          onResizeStart?.(event)
         }}
         aria-label="Resize note"
       />

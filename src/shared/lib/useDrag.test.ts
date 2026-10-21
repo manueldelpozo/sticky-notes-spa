@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { renderHook, act } from '@testing-library/react'
-import type React from 'react'
+import { type PointerEvent as ReactPointerEvent } from 'react'
 import { useDrag } from './useDrag'
 
 describe('useDrag', () => {
@@ -18,7 +18,7 @@ describe('useDrag', () => {
     clientY = 100,
     pointerId = 1,
     button = 0,
-  ): React.PointerEvent<HTMLElement> =>
+  ): ReactPointerEvent<HTMLElement> =>
     ({
       button,
       pointerId,
@@ -26,7 +26,7 @@ describe('useDrag', () => {
       clientY,
       currentTarget: mockElement,
       preventDefault: vi.fn(),
-    }) as unknown as React.PointerEvent<HTMLElement>
+    }) as unknown as ReactPointerEvent<HTMLElement>
 
   it('returns isDragging false initially', () => {
     const { result } = renderHook(() => useDrag())

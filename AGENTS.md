@@ -12,3 +12,5 @@ All agentic pair-programming and code modifications must conform to:
    - Avoid `React.FC` / `React.FunctionComponent`.
    - Separate Context/Hooks from Provider components to preserve Fast Refresh HMR.
    - Strict typing for all events and domain models.
+   - Direct inline type imports (`import { hook, type EventType } from 'react'`); avoid `import type React from 'react'`.
+   - Name event and error parameters explicitly (`event`, `error`); never use single-letter `e` or `err`.

@@ -1,5 +1,10 @@
-import { useState, useRef, useEffect, useCallback } from 'react'
-import type React from 'react'
+import {
+  useState,
+  useRef,
+  useEffect,
+  useCallback,
+  type PointerEvent as ReactPointerEvent,
+} from 'react'
 
 export interface DragDelta {
   dx: number
@@ -7,16 +12,16 @@ export interface DragDelta {
 }
 
 export interface UseDragOptions {
-  onDragStart?: (e: PointerEvent) => void
-  onDragMove?: (delta: DragDelta, e: PointerEvent) => void
-  onDragEnd?: (e: PointerEvent) => void
+  onDragStart?: (event: PointerEvent) => void
+  onDragMove?: (delta: DragDelta, event: PointerEvent) => void
+  onDragEnd?: (event: PointerEvent) => void
   /** Minimum pixel movement before drag is recognized (default: 3) */
   threshold?: number
 }
 
 export interface UseDragReturn {
   isDragging: boolean
-  handlePointerDown: (e: React.PointerEvent<HTMLElement>) => void
+  handlePointerDown: (event: ReactPointerEvent<HTMLElement>) => void
 }
 
 export function useDrag(options: UseDragOptions = {}): UseDragReturn {
@@ -53,19 +58,19 @@ export function useDrag(options: UseDragOptions = {}): UseDragReturn {
   }, [removeListeners])
 
   const handlePointerDown = useCallback(
-    (e: React.PointerEvent<HTMLElement>) => {
+    (event: ReactPointerEvent<HTMLElement>) => {
       // Only respond to primary button (left click / single touch)
-      if (e.button !== 0) return
+      if (event.button !== 0) return
 
-      e.preventDefault()
+      event.preventDefault()
 
-      const pointerId = e.pointerId
-      const target = e.currentTarget
+      const pointerId = event.pointerId
+      const target = event.currentTarget
 
       activePointerIdRef.current = pointerId
       targetElementRef.current = target
-      startPosRef.current = { x: e.clientX, y: e.clientY }
-      prevPosRef.current = { x: e.clientX, y: e.clientY }
+      startPosRef.current = { x: event.clientX, y: event.clientY }
+      prevPosRef.current = { x: event.clientX, y: event.clientY }
       hasStartedRef.current = false
 
       if (typeof target.setPointerCapture === 'function') {
