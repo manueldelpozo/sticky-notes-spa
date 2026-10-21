@@ -1,5 +1,5 @@
 # Task 08 (Bonus I) — Text Editing
-## Status: ⬜ TODO
+## Status: ✅ COMPLETE
 
 ---
 
