@@ -1,5 +1,5 @@
 # Task 03 — Drag Engine: `useDrag` Hook
-## Status: ⬜ TODO
+## Status: ✅ COMPLETE
 
 ---
 

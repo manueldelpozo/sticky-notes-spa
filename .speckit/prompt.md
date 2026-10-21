@@ -22,8 +22,8 @@ Spec-driven workflow:
 - React TS Guardian rules: .agents/rules/react-typescript.instructions.md & AGENTS.md
 - Each task: READ spec → IMPLEMENT → GATE (typecheck + test:run + lint) → I REVIEW → COMMIT → PUSH
 
-Current task: Task 03 — Drag engine: useDrag hook (PointerEvent)
-Spec file: .speckit/artifacts/03-drag-engine.md
+Current task: Task 04 — Feature: Create note (double-click)
+Spec file: .speckit/artifacts/04-create-note.md
 
 Please:
 1. Read the spec file fully before writing any code
@@ -47,7 +47,7 @@ Please:
   - Spec: `.speckit/artifacts/02-board-canvas.md`
   - Gates: `npm run typecheck && npm run test:run && npm run lint`
   - Commit: `feat(app): add NoteContext + BoardPage shell`
-- [ ] **Task 03** — Drag engine: `useDrag` hook (PointerEvent)
+- [x] **Task 03** — Drag engine: `useDrag` hook (PointerEvent)
   - Spec: `.speckit/artifacts/03-drag-engine.md`
   - Gates: `npm run typecheck && npm run test:run && npm run lint`
   - Commit: `feat(shared/lib): implement useDrag hook`
