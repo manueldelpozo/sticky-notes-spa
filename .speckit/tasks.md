@@ -70,16 +70,16 @@
   - **Gates**: Passed (41 tests total)
   - **Commit**: `feat(features/move-note): implement note drag-to-move`
 
-- [ ] **Task 06: Feature: Resize Note (Corner Handle)**
+- [x] **Task 06: Feature: Resize Note (Corner Handle)**
   - **Branch**: `feature/06-resize-note`
   - **Deliverables**:
     - `src/features/resize-note/constants/resizeLimits.ts` (`MIN_NOTE_SIZE = { width: 120, height: 100 }`)
     - `src/features/resize-note/hooks/useResizeNote.ts` (uses `useDrag`, size clamping)
-    - `src/features/resize-note/hooks/useResizeNote.test.ts` (unit tests with minimum size clamping)
+    - `src/features/resize-note/hooks/useResizeNote.test.tsx` (unit tests with minimum size clamping)
     - `src/features/resize-note/index.ts` (barrel export)
-    - `src/pages/board/BoardPage.tsx` (connect `handleResizeStart` to note cards)
-  - **Gates**: `npm run typecheck && npm run test:run && npm run lint`
-  - **Commit**: `feat(features/resize-note): implement note resize`
+    - `src/pages/board/components/BoardNoteCard.tsx` (connect `handleResizeStart` to note cards)
+  - **Gates**: Passed (45 tests total)
+  - **Commit**: `feat(features/resize-note): implement note resize via drag handle`
 
 - [ ] **Task 07: Feature: Trash Zone (Drag-to-Delete)**
   - **Branch**: `feature/07-trash-zone`
