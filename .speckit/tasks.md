@@ -113,8 +113,11 @@
   - **Deliverables**: `NoteRepository` abstraction, `LocalStorageNoteRepository` with schema validation/error recovery, `NoteProvider` hydration and debounced auto-save.
   - **Gates**: Passed (64 tests total)
   - **Commit**: `feat(bonus/storage): add NoteRepository abstraction + LocalStorageNoteRepository`
-- [ ] **Bonus IV: Note Color Palette**
-  - **Deliverables**: Connect color swatches in header to dispatch `SET_COLOR`.
+- [x] **Bonus IV: Note Color Palette**
+  - **Branch**: `feature/11-bonus-colors`
+  - **Deliverables**: Connect color swatches in header to dispatch `SET_COLOR`, verify color updating via `BoardPage.test.tsx`.
+  - **Gates**: Passed (73 tests total)
+  - **Commit**: `feat(bonus/colors): add note color picker with SET_COLOR action`
 - [ ] **Bonus V: Async REST Mock**
   - **Deliverables**: Artificial latency repository simulating backend API.
 
