@@ -59,14 +59,15 @@
   - **Gates**: Passed (38 tests total)
   - **Commit**: `feat(features/create-note): create note on double-click`
 
-- [ ] **Task 05: Feature: Move Note (Drag-to-Reposition)**
+- [x] **Task 05: Feature: Move Note (Drag-to-Reposition)**
   - **Branch**: `feature/05-move-note`
   - **Deliverables**:
     - `src/features/move-note/hooks/useMoveNote.ts` (uses `useDrag`, accumulates deltas, dispatches `MOVE` & `BRING_TO_FRONT`)
-    - `src/features/move-note/hooks/useMoveNote.test.ts` (unit tests for move accumulation)
+    - `src/features/move-note/hooks/useMoveNote.test.tsx` (unit tests for move accumulation)
     - `src/features/move-note/index.ts` (barrel export)
-    - `src/pages/board/BoardPage.tsx` (connect `handleDragStart` to note cards)
-  - **Gates**: `npm run typecheck && npm run test:run && npm run lint`
+    - `src/pages/board/components/BoardNoteCard.tsx` (connect `handleDragStart` to note cards)
+    - `src/pages/board/BoardPage.tsx`
+  - **Gates**: Passed (41 tests total)
   - **Commit**: `feat(features/move-note): implement note drag-to-move`
 
 - [ ] **Task 06: Feature: Resize Note (Corner Handle)**

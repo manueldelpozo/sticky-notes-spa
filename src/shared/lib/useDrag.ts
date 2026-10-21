@@ -94,11 +94,14 @@ export function useDrag(options: UseDragOptions = {}): UseDragReturn {
             hasStartedRef.current = true
             setIsDragging(true)
             optionsRef.current.onDragStart?.(moveEvent)
-            prevPosRef.current = { x: moveEvent.clientX, y: moveEvent.clientY }
-          }
-        }
 
-        if (hasStartedRef.current) {
+            const dx = moveEvent.clientX - prevPosRef.current.x
+            const dy = moveEvent.clientY - prevPosRef.current.y
+            prevPosRef.current = { x: moveEvent.clientX, y: moveEvent.clientY }
+
+            optionsRef.current.onDragMove?.({ dx, dy }, moveEvent)
+          }
+        } else {
           const dx = moveEvent.clientX - prevPosRef.current.x
           const dy = moveEvent.clientY - prevPosRef.current.y
           prevPosRef.current = { x: moveEvent.clientX, y: moveEvent.clientY }
