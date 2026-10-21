@@ -41,10 +41,48 @@ export const NoteCard: React.FC<NoteCardProps> = ({ note, onDragStart }) => { ..
 
 ### 1.3 Strict Event Types
 Always use precise native/synthetic event types:
-- `React.PointerEvent<HTMLElement>` for pointer drag/resize interactions.
-- `React.MouseEvent<HTMLElement>` for click/double-click interactions.
-- `React.ChangeEvent<HTMLTextAreaElement>` or `HTMLInputElement` for form inputs.
+- `ReactPointerEvent<HTMLElement>` for pointer drag/resize interactions.
+- `ReactMouseEvent<HTMLElement>` for click/double-click interactions.
+- `ChangeEvent<HTMLTextAreaElement>` or `HTMLInputElement` for form inputs.
 - Never use generic `Event` or `any`.
+
+### 1.4 Direct Type Imports & Inline Type Syntax
+- Import specific React types directly instead of importing the entire namespace `import type React from 'react'`.
+- Prefer combining runtime imports and type imports in the same `import` statement using inline type specifiers (`import { useState, type PointerEvent as ReactPointerEvent } from 'react'`) rather than separate import lines.
+
+```tsx
+// ✅ Correct
+import { useState, useRef, useEffect, useCallback, type PointerEvent as ReactPointerEvent } from 'react'
+
+export interface UseDragReturn {
+  isDragging: boolean
+  handlePointerDown: (e: ReactPointerEvent<HTMLElement>) => void
+}
+
+// ❌ Incorrect: do NOT import whole namespace or use separate import lines for types
+import type React from 'react'
+import { useState } from 'react'
+```
+
+### 1.5 Parameter & Variable Naming: `event` and `error`
+- Name event parameters and handler variables explicitly as `event` instead of single-letter `e`.
+- Name error objects in `catch` blocks or callbacks as `error` instead of `e` or `err`.
+
+```tsx
+// ✅ Correct
+onPointerDown={(event) => event.stopPropagation()}
+onDragStart?: (event: ReactPointerEvent) => void
+try {
+  target.setPointerCapture(pointerId)
+} catch (error) {
+  // handled
+}
+
+// ❌ Incorrect
+onPointerDown={(e) => e.stopPropagation()}
+onDragStart?: (e: ReactPointerEvent) => void
+try { ... } catch (e) { ... }
+```
 
 ---
 
