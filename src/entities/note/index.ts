@@ -1,4 +1,6 @@
 export type { Note, Position, Size, NoteColor, CreateNoteParams } from './model/types'
 export { noteReducer } from './model/noteReducer'
 export type { NoteAction } from './model/noteReducer'
+export type { NoteRepository } from './model/repository'
+export { LocalStorageNoteRepository, STORAGE_KEY } from './lib/LocalStorageNoteRepository'
 export { NoteCard } from './ui/NoteCard'

@@ -72,8 +72,10 @@ Please:
   - Commit: `feat(features/trash-note): implement drag-to-trash with hover detection`
 
 ### Phase 2 — Bonus (optional, ordered by value/effort)
-- [ ] **Bonus III** — localStorage persistence
+- [x] **Bonus III** — localStorage persistence
   - Spec: `.speckit/artifacts/10-bonus-storage.md`
+  - Gates: `npm run typecheck && npm run test:run && npm run lint`
+  - Commit: `feat(bonus/storage): add NoteRepository abstraction + LocalStorageNoteRepository`
 - [ ] **Bonus I** — Text editing
   - Spec: `.speckit/artifacts/08-bonus-text.md`
 - [ ] **Bonus II** — Bring to front (z-index)

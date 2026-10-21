@@ -102,8 +102,11 @@
   - **Deliverables**: Wire `UPDATE_TEXT` on textarea change, isolated pointer events.
 - [ ] **Bonus II: Bring to Front (Z-Index)**
   - **Deliverables**: Wire `BRING_TO_FRONT` on card click and drag start.
-- [ ] **Bonus III: LocalStorage Persistence**
-  - **Deliverables**: `src/shared/lib/storage/` repository pattern (`LocalStorageNoteRepository`), auto-save and initial hydration.
+- [x] **Bonus III: LocalStorage Persistence**
+  - **Branch**: `feature/10-bonus-storage`
+  - **Deliverables**: `NoteRepository` abstraction, `LocalStorageNoteRepository` with schema validation/error recovery, `NoteProvider` hydration and debounced auto-save.
+  - **Gates**: Passed (64 tests total)
+  - **Commit**: `feat(bonus/storage): add NoteRepository abstraction + LocalStorageNoteRepository`
 - [ ] **Bonus IV: Note Color Palette**
   - **Deliverables**: Connect color swatches in header to dispatch `SET_COLOR`.
 - [ ] **Bonus V: Async REST Mock**
