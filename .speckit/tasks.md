@@ -128,7 +128,8 @@
 
 ## Pre-Submission Review Checklist
 
-- [ ] All test gates pass on a fresh checkout (`npm run typecheck && npm run test:run && npm run lint`)
-- [ ] Production build succeeds cleanly (`npm run build`)
-- [ ] Architecture description written (2-3 paragraphs in README.md)
-- [ ] Manual cross-browser test in Chrome, Firefox, Safari/Edge
+- [x] All test gates pass on a fresh checkout (`npm run typecheck && npm run test:run && npm run lint`)
+- [x] Production build succeeds cleanly (`npm run build`)
+- [x] Architecture description written (2-3 paragraphs in README.md)
+- [x] Manual cross-browser test in Chrome, Firefox, Safari/Edge
+
